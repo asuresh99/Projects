@@ -1,20 +1,30 @@
 import random
 
 def display_board(spots):
-    empty_space = '   '
-    col_sep = '|'
-    row_sep = '-----------' + '     ' + '-----------'
-    print(empty_space + col_sep + empty_space + col_sep + empty_space + '     ' + empty_space + col_sep + empty_space + col_sep + empty_space)
-    print(' 1 ' + col_sep + ' 2 ' + col_sep + ' 3 ' + '     ' + spots[1] + col_sep + spots[2] + col_sep + spots[3])
-    print(empty_space + col_sep + empty_space + col_sep + empty_space + '     ' + empty_space + col_sep + empty_space + col_sep + empty_space)
-    print(row_sep)
-    print(empty_space + col_sep + empty_space + col_sep + empty_space + '     ' + empty_space + col_sep + empty_space + col_sep + empty_space)
-    print(' 4 ' + col_sep + ' 5 ' + col_sep + ' 6 ' + '     ' + spots[4] + col_sep + spots[5] + col_sep + spots[6])
-    print(empty_space + col_sep + empty_space + col_sep + empty_space + '     ' + empty_space + col_sep + empty_space + col_sep + empty_space)
-    print(row_sep)
-    print(empty_space + col_sep + empty_space + col_sep + empty_space + '     ' + empty_space + col_sep + empty_space + col_sep + empty_space)
-    print(' 7 ' + col_sep + ' 8 ' + col_sep + ' 9 ' + '     ' + spots[7] + col_sep + spots[8] + col_sep + spots[9])
-    print(empty_space + col_sep + empty_space + col_sep + empty_space + '     ' + empty_space + col_sep + empty_space + col_sep + empty_space)
+    print("--------------------")
+    for i, row in enumerate(board_rows):
+        if i == 0:
+            print(f"| {spots[1]} | {spots[2]} | {spots[3]} |")
+            print("--------------------")
+        if i == 1:
+            print(f"| {spots[4]} | {spots[5]} | {spots[6]} |")
+            print("--------------------")
+        if i == 2:
+            print(f"| {spots[7]} | {spots[8]} | {spots[9]} |")
+            print("--------------------")
+            
+def board_layout():
+    print("--------------------")
+    for i, row in enumerate(board_rows):
+        if i == 0:
+            print(f"|  1  |  2  |  3  |")
+            print("--------------------")
+        if i == 1:
+            print(f"|  4  |  5  |  6  |")
+            print("--------------------")
+        if i == 2:
+            print(f"|  7  |  8  |  9  |")
+            print("--------------------")
 
 def get_playernumber():
     player_num = ''
@@ -125,6 +135,7 @@ def game_check(spots):
         return "Player 2 is winner"
 
 
+board_rows = [1, 2, 3]
 spots = {1: '   ', 2: '   ', 3: '   ', 4: '   ', 5: '   ', 6: '   ', 7: '   ', 8: '   ', 9: '   '}
 choices = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 players = ['1', '2']
@@ -136,7 +147,7 @@ print("Player 1 is X and Player 2 is O")
 print("The computer will decide who goes first using a randomizer to pick the player")
 current_player = random.choice(players)
 print("The game board will look like this. \nWhen its your turn, please pick the square you want your X or O at by choosing the respective number")
-display_board(spots)
+board_layout()
 ans = ask_ready()
 
 while ans == 'Y':
